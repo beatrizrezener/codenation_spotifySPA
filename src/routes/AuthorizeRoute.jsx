@@ -30,7 +30,7 @@ const AuthorizeRoute = () => {
   }, [isLogged]);
 
   if (redirect) {
-    return (<Redirect to={"#arealogada"} />);
+    return (<Redirect to={{ pathname: '/dashboard' }} />);
   }
   return (<Authorize />);
 }

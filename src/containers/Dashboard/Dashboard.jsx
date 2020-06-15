@@ -1,8 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Dashboard.scss';
 
-const Dashboard = ({ children }) => (<div className="dashboard" />);
+const Dashboard = ({ children }) => {
+
+  return (
+    <div
+      className="dashboard"
+      data-testid="dashboard"
+    >
+      {children}
+    </div>
+  );
+};
+
+Dashboard.defaultProps = {
+  children: [],
+}
+
+Dashboard.propTypes = {
+  children: PropTypes.node,
+}
 
 export default Dashboard;
 
