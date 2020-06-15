@@ -23,6 +23,8 @@ import {
   Topbar,
 } from '../containers';
 
+import PlaylistsRoute from './PlaylistsRoute';
+
 const { getCategories, getUserProfile } = endpoints;
 
 const DashboardRoute = () => {
@@ -81,6 +83,10 @@ const DashboardRoute = () => {
             data={jukebox.categories}
             url={url}
           />
+        </PrivateRoute>
+
+        <PrivateRoute exact path={`${path}/:categoryId`}>
+          <PlaylistsRoute path={path} />
         </PrivateRoute>
       </Switch>
     </Dashboard>
