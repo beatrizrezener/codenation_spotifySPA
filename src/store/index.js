@@ -3,8 +3,12 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 
 import appReducers from '../reducers';
+import UserConstants from '../constants/user';
 
 const rootReducer = (state, action) => {
+  if (action.type === UserConstants.USER_LOGOUT) {
+    state = undefined
+  }
   return appReducers(state, action)
 }
 

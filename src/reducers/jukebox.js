@@ -15,6 +15,12 @@ const jukeboxReducer = (state = jukeboxInitialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case JukeboxConstants.ADD_PLAYER_TRACK:
+      return {
+        ...state,
+        playingNowId: payload.id,
+        playingNowTrack: payload,
+      };
     case JukeboxConstants.GET_CATEGORIES_REQUEST:
       return {
         ...state,
@@ -54,6 +60,38 @@ const jukeboxReducer = (state = jukeboxInitialState, action) => {
         errorMessage: payload.message,
         playlists: [],
         status: 'error',
+      };
+    case JukeboxConstants.GET_PLAYLIST_TRACKS_REQUEST:
+      return {
+        ...state,
+        tracks: [],
+        status: 'running',
+      };
+    case JukeboxConstants.GET_PLAYLIST_TRACKS_SUCCESS:
+      return {
+        ...state,
+        errorMessage: '',
+        tracks: payload.filter(({track}) => track),
+        status: 'success',
+      };
+    case JukeboxConstants.GET_PLAYLIST_TRACKS_FAILED:
+      return {
+        ...state,
+        tracks: [],
+        errorMessage: payload.message,
+        status: 'error',
+      };
+    case JukeboxConstants.REMOVE_PLAYER_TRACK:
+      return {
+        ...state,
+        playingNowId: null,
+        playingNowTrack: null,
+        playerHeight: 0,
+      };
+    case JukeboxConstants.SET_PLAYER_HEIGHT:
+      return {
+        ...state,
+        playerHeight: payload,
       };
     default:
       return state

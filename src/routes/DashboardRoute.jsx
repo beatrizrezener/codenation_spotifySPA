@@ -24,6 +24,7 @@ import {
 } from '../containers';
 
 import PlaylistsRoute from './PlaylistsRoute';
+import TracksRoute from './TracksRoute';
 
 const { getCategories, getUserProfile } = endpoints;
 
@@ -87,6 +88,10 @@ const DashboardRoute = () => {
 
         <PrivateRoute exact path={`${path}/:categoryId`}>
           <PlaylistsRoute path={path} />
+        </PrivateRoute>
+
+        <PrivateRoute exact path={`${path}/:categoryId/:playlistId`}>
+          <TracksRoute />
         </PrivateRoute>
       </Switch>
     </Dashboard>
