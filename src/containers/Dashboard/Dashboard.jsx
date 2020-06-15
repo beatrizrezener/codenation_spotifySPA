@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Player } from '../';
 import './Dashboard.scss';
 
 const Dashboard = ({ children }) => {
@@ -11,6 +12,7 @@ const Dashboard = ({ children }) => {
       data-testid="dashboard"
     >
       {children}
+      <Player />
     </div>
   );
 };
